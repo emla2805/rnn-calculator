@@ -1,5 +1,4 @@
 import os
-import time
 import itertools
 import numpy as np
 from argparse import ArgumentParser
@@ -121,8 +120,7 @@ if __name__ == "__main__":
 
     model.fit(
         dataset,
-        # epochs=args.epochs,
-        epochs=1,
+        epochs=args.epochs,
         steps_per_epoch=2000,
         callbacks=[
             TensorBoard(log_dir=args.log_dir, profile_batch=0),
@@ -141,4 +139,3 @@ if __name__ == "__main__":
     end_to_end_model = tf.keras.Model(inputs, outputs)
     end_to_end_model.save(os.path.join(args.log_dir, "model"))
 
-    # model.save(os.path.join(args.log_dir, "model"))
